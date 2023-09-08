@@ -58,21 +58,22 @@ namespace ShoeRecommendationsBackend.Controllers
                count++;
             }
 
+            List<ShoeModel> result = new List<ShoeModel>();
             if(!String.IsNullOrEmpty(model.color))
-                shoes = shoes.Where(p => p.color.ToLower().Contains(model.color.ToLower())).ToList();
+                result.AddRange(shoes.Where(p => p.color.ToLower().Contains(model.color.ToLower())));
 
             if (model.heels)
-                shoes = shoes.Where(p => p.categories.ToLower().Contains("heels")).ToList();
+                result.AddRange(shoes.Where(p => p.categories.ToLower().Contains("heels")));
             if (model.sandals)
-                shoes = shoes.Where(p => p.categories.ToLower().Contains("sandals")).ToList();
+                result.AddRange( shoes.Where(p => p.categories.ToLower().Contains("sandals")));
             if (model.shoes)
-                shoes = shoes.Where(p => p.categories.ToLower().Contains("shoes")).ToList();
+                result.AddRange(shoes.Where(p => p.categories.ToLower().Contains("shoes")));
             if (model.slippers)
-                shoes = shoes.Where(p => p.categories.ToLower().Contains("slippers")).ToList();
+                result.AddRange(shoes.Where(p => p.categories.ToLower().Contains("slippers")));
             if (model.boots)
-                shoes = shoes.Where(p => p.categories.ToLower().Contains("boots")).ToList();
+                result.AddRange(shoes.Where(p => p.categories.ToLower().Contains("boots")));
 
-            return shoes;
+            return result;
         }
     }
 
